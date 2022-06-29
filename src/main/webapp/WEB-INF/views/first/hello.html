@@ -5,7 +5,8 @@
     <title>Hello</title>
 </head>
 <body>
-    <p>hello.</p>
+    <p th:text="${message}"></p>
+    <p>hello. <a href="hello.html?name=Anon&surname=Anonymous">say hello again with name-surname</a></p>
     <a href="goodbye.html">say goodbye.</a>
     <p>or: <a href="/">go to main page.</a></p>
     <p>or you can <a href="/exit">exit.</a></p>
