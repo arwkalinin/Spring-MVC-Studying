@@ -11,18 +11,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CalculateController {
 
     @GetMapping("calculate")
-    public String calculateWithParams(@RequestParam("a") int a,
-                                      @RequestParam("b") int b,
+    public String calculateWithParams(@RequestParam("a") double a,
+                                      @RequestParam("b") double b,
                                       @RequestParam("action") String action,
                                       Model model) {
-        int result = 0;
-        switch (action) {
-            case "multiplication": result = a * b; break;
-            case "addition": result = a + b; break;
-            case "subtraction": result = a - b; break;
-            case "division": result = a / b; break;
+        double result = 0;
+        try {
+            switch (action) {
+                case "multiplication": result = a * b; break;
+                case "addition": result = a + b; break;
+                case "subtraction": result = a - b; break;
+                case "division": result = a / b; break;
+            }
+        } finally {
+            model.addAttribute("result", result);
         }
-        model.addAttribute("result", result);
         return "calculator/calculate";
     }
 }
